@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BLACKWOOD — барбершоп</title>
+  <meta name="description" content="BLACKWOOD — барбершоп: стрижки, борода, уход. Примерьте причёску в 3D и запишитесь онлайн.">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Подключаем 3D-библиотеку Three.js (бесплатная, грузится из интернета) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+
+  <!-- ШАПКА -->
+  <header class="header">
+    <a class="logo" href="#top">BLACK<span>WOOD</span></a>
+    <nav class="nav" id="nav">
+      <a href="#styles">Причёски 3D</a>
+      <a href="#services">Услуги</a>
+      <a href="#barbers">Мастера</a>
+      <a href="#booking">Запись</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+  </header>
+
+  <!-- ГЛАВНЫЙ ЭКРАН -->
+  <section class="hero" id="top">
+    <div class="hero-text">
+      <p class="tag">Барбершоп · Ваш город</p>
+      <h1>Стрижка, после которой <em>оборачиваются</em></h1>
+      <p class="lead">Мужские стрижки, оформление бороды, уход. Сначала примерьте причёску в 3D, потом приходите — мастер сделает так же.</p>
+      <div class="hero-btns">
+        <a class="btn" href="#booking">Записаться</a>
+        <a class="btn ghost" href="#styles">Смотреть причёски</a>
+      </div>
+      <ul class="facts">
+        <li><b>7 лет</b> на рынке</li>
+        <li><b>5 000+</b> клиентов</li>
+        <li><b>10:00–22:00</b> без выходных</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3D ПРИЧЁСКИ -->
+  <section class="section" id="styles">
+    <h2>Примерьте причёску в 3D</h2>
+    <p class="sub">Крутите модель мышкой или пальцем, выбирайте стрижку и цвет волос.</p>
+    <div class="viewer-wrap">
+      <div id="viewer" class="viewer"><div class="loading" id="loading">Загрузка 3D…</div></div>
+      <div class="panel">
+        <h3 id="style-name">Кроп</h3>
+        <p id="style-desc" class="desc"></p>
+        <p class="label">Причёска</p>
+        <div class="chips" id="style-chips"></div>
+        <p class="label">Цвет волос</p>
+        <div class="colors" id="color-chips"></div>
+        <label class="check"><input type="checkbox" id="beard-toggle"> Добавить бороду</label>
+        <a class="btn small" href="#booking">Хочу такую</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- УСЛУГИ -->
+  <section class="section dark" id="services">
+    <h2>Услуги и цены</h2>
+    <div class="cards">
+      <div class="card"><h3>Мужская стрижка</h3><p>Машинка + ножницы, мытьё головы, укладка.</p><span class="price">от 1 500 ₽</span></div>
+      <div class="card"><h3>Fade / Кроп</h3><p>Плавный переход, чёткие линии.</p><span class="price">от 1 800 ₽</span></div>
+      <div class="card"><h3>Борода</h3><p>Моделирование, горячее полотенце, масло.</p><span class="price">от 1 000 ₽</span></div>
+      <div class="card"><h3>Стрижка + борода</h3><p>Полный образ за один визит.</p><span class="price">от 2 400 ₽</span></div>
+      <div class="card"><h3>Королевское бритьё</h3><p>Опасная бритва, паровое полотенце.</p><span class="price">от 1 500 ₽</span></div>
+      <div class="card"><h3>Детская стрижка</h3><p>До 12 лет, аккуратно и без слёз.</p><span class="price">от 1 000 ₽</span></div>
+    </div>
+  </section>
+
+  <!-- МАСТЕРА -->
+  <section class="section" id="barbers">
+    <h2>Наши мастера</h2>
+    <div class="cards">
+      <div class="card barber"><div class="avatar">А</div><h3>Алексей</h3><p>Топ-барбер · стаж 8 лет</p></div>
+      <div class="card barber"><div class="avatar">М</div><h3>Максим</h3><p>Fade и классика · стаж 5 лет</p></div>
+      <div class="card barber"><div class="avatar">Д</div><h3>Даниил</h3><p>Борода и бритьё · стаж 4 года</p></div>
+    </div>
+  </section>
+
+  <!-- ЗАПИСЬ -->
+  <section class="section dark" id="booking">
+    <h2>Онлайн-запись</h2>
+    <p class="sub">Заполните форму — откроется Telegram с готовым сообщением для администратора.</p>
+    <form id="booking-form" class="form">
+      <input type="text" id="f-name" placeholder="Ваше имя" required>
+      <input type="tel" id="f-phone" placeholder="Телефон" required>
+      <select id="f-service">
+        <option>Мужская стрижка</option>
+        <option>Fade / Кроп</option>
+        <option>Борода</option>
+        <option>Стрижка + борода</option>
+        <option>Королевское бритьё</option>
+        <option>Детская стрижка</option>
+      </select>
+      <input type="date" id="f-date" required>
+      <button class="btn" type="submit">Записаться в Telegram</button>
+    </form>
+  </section>
+
+  <!-- КОНТАКТЫ -->
+  <section class="section" id="contacts">
+    <h2>Контакты</h2>
+    <div class="cards">
+      <div class="card"><h3>Адрес</h3><p>г. Ваш город, ул. Примерная, 10</p><a href="https://yandex.ru/maps/" target="_blank" rel="noopener">Открыть на карте</a></div>
+      <div class="card"><h3>Горячая линия</h3><p><a href="tel:+78000000000">8 (800) 000-00-00</a></p><p>Ежедневно 10:00–22:00</p></div>
+      <div class="card"><h3>Мы в соцсетях</h3><p><a href="https://t.me/your_telegram" target="_blank" rel="noopener">Telegram</a></p><p><a href="https://vk.com/" target="_blank" rel="noopener">ВКонтакте</a></p></div>
+    </div>
+  </section>
+
+  <footer class="footer">© 2026 BLACKWOOD. Демо-сайт для портфолио.</footer>
+
+  <!-- ПЛАВАЮЩАЯ КНОПКА СВЯЗИ -->
+  <div class="contact-fab" id="fab">
+    <div class="fab-list" id="fab-list">
+      <a href="tel:+78000000000" class="fab-item">📞 Горячая линия</a>
+      <a href="https://t.me/your_telegram" target="_blank" rel="noopener" class="fab-item">✈️ Telegram</a>
+      <a href="https://wa.me/78000000000" target="_blank" rel="noopener" class="fab-item">💬 WhatsApp</a>
+      <a href="https://vk.com/" target="_blank" rel="noopener" class="fab-item">🔵 ВКонтакте</a>
+    </div>
+    <button class="fab-btn" id="fab-btn" aria-label="Связаться">💬</button>
+  </div>
+
+</body>
+</html>
